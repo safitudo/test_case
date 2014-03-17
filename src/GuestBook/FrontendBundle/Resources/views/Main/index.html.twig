@@ -1,0 +1,41 @@
+{% extends 'GuestBookFrontendBundle::layout.html.twig' %}
+
+{% block body %}
+	<h1>Guests</h1>
+	
+	{% for flashMessage in app.session.flashbag.get('success') %}
+	<div class="row">
+	<div class="col-sm-6">
+	    <div class="alert alert-success">
+	        {{ flashMessage }}
+	    </div>
+	    </div>
+	</div>
+
+	{% endfor %}
+	<p>
+		<a href="{{ url('add_guest') }}" class="btn btn-default">Add Entry</a>
+	</p>
+	{% if guests | length == 0 %}
+	<h3>No guests available</h3>
+	{% endif %}
+	<br />
+	<div class="row">
+		<div class="col-sm-9">
+	<table class="table" width="70%">
+	{% for guest in guests %}
+		<tr>
+			<td>
+				{{guest.name}}
+			</td>
+			<td>
+				{{guest.email}}
+			</td>
+			<td class="text-right">
+				<a href="{{ url('render_pdf', {id: guest.id}) }}" class="btn btn-xs btn-default">Show PDF</a>
+			</td>
+		</tr>
+	{% endfor %}
+	</table>
+	</div></div>
+{% endblock %}

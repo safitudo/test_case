@@ -1,0 +1,11 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: GuestBookFrontendBundle:Main:index }
+
+add_guest:
+    pattern:  /add
+    defaults: { _controller: GuestBookFrontendBundle:Guest:add }
+
+render_pdf:
+    pattern:  /render/{id}.pdf
+    defaults: { _controller: GuestBookFrontendBundle:Guest:render }

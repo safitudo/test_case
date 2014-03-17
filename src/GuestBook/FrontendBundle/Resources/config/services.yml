@@ -1,0 +1,10 @@
+parameters:
+#    guest_book_frontend.example.class: GuestBook\FrontendBundle\Example
+
+services:
+#    guest_book_frontend.example:
+#        class: %guest_book_frontend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    guest.service:
+        class:        GuestBook\FrontendBundle\Controller\GuestService
+        arguments: 	  [@doctrine.orm.entity_manager]
